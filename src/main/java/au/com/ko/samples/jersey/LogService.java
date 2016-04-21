@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 
 @Singleton
 @Path("/")
+@Produces(MediaType.APPLICATION_JSON)
 public class LogService {
 
 	private final Map<String, String> data = new HashMap<>(3);
@@ -34,7 +35,6 @@ public class LogService {
 
 	@POST
 	@Path("log")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response log(LogData log) {
 
 		return Response.ok().entity(log).build();
@@ -42,7 +42,6 @@ public class LogService {
 
 	@GET
 	@Path("/log")
-	@Produces(MediaType.APPLICATION_JSON)
 	public LogData produceJSON() {
 		// Our custom Jackson mapper added to Jersey is used to convert 'logData' to JSON.
 		return logData;
